@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "albumId": "alb-1",
+    "usuarioCorreo": "cliente@gmail.com",
+    "usuarioNombre": "Cliente Ejemplo",
+    "usuarioRol": "Cliente",
+    "puntuacion": 10,
+    "comentario": "¡Una obra de arte total del hip-hop chileno! Sonido crudo y letras impecables.",
+    "fecha": "2026-10-01"
+  },
+  {
+    "id": 2,
+    "albumId": "alb-1",
+    "usuarioCorreo": "cliente2@gmail.com",
+    "usuarioNombre": "Cliente Ejemplo 2",
+    "usuarioRol": "Cliente",
+    "puntuacion": 9,
+    "comentario": "Un disco imprescindible en cualquier colección de rap noventero.",
+    "fecha": "2026-10-03"
+  },
+  {
+    "id": 3,
+    "albumId": "alb-2",
+    "usuarioCorreo": "cliente@gmail.com",
+    "usuarioNombre": "Cliente Ejemplo",
+    "usuarioRol": "Cliente",
+    "puntuacion": 10,
+    "comentario": "Un manifiesto fundamental de rap con contenido político y social.",
+    "fecha": "2026-10-04"
+  }
+]
