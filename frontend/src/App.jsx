@@ -16,7 +16,7 @@ import { Contacto } from './pages/Contacto';
 import { Carrito } from './pages/Carrito';
 import { Resenas } from './pages/Resena';
 import { DetalleResena } from './pages/DetalleResena';
-import { Blog } from './pages/blog';
+import { Blog } from './pages/Blog';
 import { DetalleBlog } from './pages/DetalleBlog';
 import { IniciarSesion } from './pages/IniciarSesion';
 import { Categorias } from './pages/Categorias';
