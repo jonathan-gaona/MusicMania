@@ -6,7 +6,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { IniciarSesion } from './IniciarSesion';
 import * as authService from '../services/authService';
 
-vi.mock('../services/authService', () => ({ login: vi.fn() }));
+vi.mock('../services/authService', () => ({ login: vi.fn(), loginConGoogle: vi.fn() }));
 
 describe('Prueba Unitaria - IniciarSesion', () => {
   beforeEach(() => {
@@ -14,7 +14,7 @@ describe('Prueba Unitaria - IniciarSesion', () => {
   });
 
   it('debe llamar a login con las credenciales y mostrar la bienvenida', async () => {
-    authService.login.mockResolvedValue({ nombre: 'Administrador Principal', correo: 'admin@duoc.cl', rol: 'Administrador' });
+    authService.login.mockResolvedValue({ nombre: 'Administrador Principal', correo: 'usuario.prueba@duoc.cl', rol: 'Administrador' });
 
     render(
       <BrowserRouter>
@@ -22,11 +22,11 @@ describe('Prueba Unitaria - IniciarSesion', () => {
       </BrowserRouter>
     );
 
-    fireEvent.change(screen.getByPlaceholderText('nombre@duoc.cl'), { target: { value: 'admin@duoc.cl' } });
-    fireEvent.change(screen.getByPlaceholderText('••••••••'), { target: { value: 'admin' } });
+    fireEvent.change(screen.getByPlaceholderText('nombre@duoc.cl'), { target: { value: 'usuario.prueba@duoc.cl' } });
+    fireEvent.change(screen.getByPlaceholderText('••••••••'), { target: { value: 'clave123' } });
     fireEvent.click(screen.getByRole('button', { name: /Iniciar sesión/i }));
 
-    await waitFor(() => expect(authService.login).toHaveBeenCalledWith('admin@duoc.cl', 'admin'));
+    await waitFor(() => expect(authService.login).toHaveBeenCalledWith('usuario.prueba@duoc.cl', 'clave123'));
     expect(await screen.findByText(/Bienvenido Administrador Principal/i)).toBeInTheDocument();
   });
 
@@ -39,7 +39,7 @@ describe('Prueba Unitaria - IniciarSesion', () => {
       </BrowserRouter>
     );
 
-    fireEvent.change(screen.getByPlaceholderText('nombre@duoc.cl'), { target: { value: 'admin@duoc.cl' } });
+    fireEvent.change(screen.getByPlaceholderText('nombre@duoc.cl'), { target: { value: 'usuario.prueba@duoc.cl' } });
     fireEvent.change(screen.getByPlaceholderText('••••••••'), { target: { value: 'mala' } });
     fireEvent.click(screen.getByRole('button', { name: /Iniciar sesión/i }));
 

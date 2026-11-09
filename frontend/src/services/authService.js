@@ -16,3 +16,11 @@ export const cerrarSesion = () => {
   localStorage.removeItem('token');
   localStorage.removeItem('usuarioSesion');
 };
+
+// Recibe el ID token que entrega Google y lo canjea en el backend por la sesión de MusicMania
+export const loginConGoogle = async (credential) => {
+  const { data } = await api.post('/auth/google', { credential });
+  localStorage.setItem('token', data.token);
+  localStorage.setItem('usuarioSesion', JSON.stringify(data.usuario));
+  return data;
+};

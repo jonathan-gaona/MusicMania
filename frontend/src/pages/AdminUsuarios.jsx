@@ -108,12 +108,12 @@ export const AdminUsuarios = () => {
 
   // ELIMINAR USUARIO
   const handleEliminarUsuario = async (correoEliminar) => {
-    if (correoEliminar.toLowerCase() === 'admin@duoc.cl') {
+    const objetivo = usuarios.find((u) => u.correo.toLowerCase() === correoEliminar.toLowerCase());
+    if (objetivo?.protegido) {
       alert('No se puede eliminar la cuenta del Administrador Principal.');
       return;
     }
 
-    const objetivo = usuarios.find((u) => u.correo.toLowerCase() === correoEliminar.toLowerCase());
     if (objetivo && window.confirm(`¿Estás seguro de que deseas eliminar al usuario ${correoEliminar}?`)) {
       try {
         await usuariosService.eliminar(objetivo.id);
@@ -266,7 +266,7 @@ export const AdminUsuarios = () => {
                           onClick={() => handleEliminarUsuario(u.correo)}
                           className="btn btn-sm btn-outline-danger"
                           title="Eliminar usuario"
-                          disabled={u.correo.toLowerCase() === 'admin@duoc.cl'}
+                          disabled={!!u.protegido}
                         >
                           <i className="bi bi-trash"></i>
                         </button>

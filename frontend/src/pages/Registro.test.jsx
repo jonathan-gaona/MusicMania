@@ -6,7 +6,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { Registro } from './Registro';
 import * as authService from '../services/authService';
 
-vi.mock('../services/authService', () => ({ registrar: vi.fn() }));
+vi.mock('../services/authService', () => ({ registrar: vi.fn(), loginConGoogle: vi.fn() }));
 
 describe('Prueba Unitaria - Registro', () => {
   beforeEach(() => {
